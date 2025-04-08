@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* styles.css */
+
+.aspect-w-9 {
+  aspect-ratio: 9 / 16;
+}
+
+.aspect-3-4 {
+  aspect-ratio: 3 / 4;
+}
+
+/* .md-grid-template {
+  grid-template-columns: 1fr 
+} */
+
+@media screen and (min-width: 1024px) {
+  .md-grid-template {
+    grid-template-columns: 1fr 1.5fr 17rem;
+  }
+
+  .aspect-h-6-9 {
+    aspect-ratio: 6 / 9;
+  }
+}
+
+
+@media screen and (min-width: 1280px) {
+  .md-grid-template {
+    grid-template-columns: 1fr 1.5fr 17rem;
+  }
+
+  /* .aspect-h-6-9 {
+    aspect-ratio: 6 / 9;
+  } */
+}
+
+@media screen and (min-width: 1920px) {
+  .md-grid-template {
+    grid-template-columns: 1fr 1.5fr 19rem;
+  }
+}

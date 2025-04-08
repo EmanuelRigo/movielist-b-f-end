@@ -76,7 +76,7 @@ app.use(cors({ origin: true, credentials: true }));
 MongoSingleton.getInstance();
 
 // Middleware para mostrar un mensaje al entrar en la raíz
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
   res.send("¡Bienvenido a la API de MovieList!");
 });
 

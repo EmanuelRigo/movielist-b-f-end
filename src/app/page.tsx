@@ -2,22 +2,18 @@
 
 import MovieList from "@/components/list/MovieList";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { FooterMainMenu } from "@/components/menu/FooterMainMenu";
 import CardMovieViewer from "@/components/movie-viewer/CardMovieViewer";
 import { useMovieContext } from "@/context/MovieContext";
-
-import { checkOnlineStatus } from "@/components/widgets/users.api";
 
 
 console.log("procceess:::", process.argv)
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Estado para controlar la carga
-  const router = useRouter();
 
-  const {setMovie, setUserData} = useMovieContext()
+
+  const {setMovie} = useMovieContext()
   console.log("holaaa apps");
 
   useEffect(()=>{
@@ -37,32 +33,6 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    const fetchOnlineStatus = async () => {
-      try {
-        const response = await checkOnlineStatus();
-        if (response.response.isOnline !== true) {
-        console.log("🚀 ~ fetchOnlineStatus ~ response.response.isOnline :", response.response.isOnline )
-
-          router.push("/login"); // Redirige a la página de inicio de sesión si el usuario está offline
-
-        } else {
-          setUserData(response.response); // Establece los datos del usuario en el contexto
-          console.log("🚀 ~ fetchOnlineStatus ~ response:", response);
-          setIsLoading(false); // Establece isLoading en false si el usuario está online
-        }
-      } catch (error) {
-        console.error("Error checking online status:", error);
-        router.push("/login"); // Redirige a la página de inicio de sesión en caso de error
-      }
-    };
-
-    fetchOnlineStatus();
-  }, [router]);
-
-  if (isLoading) {
-    return null; // No renderiza nada mientras isLoading es true
-  }
 
   return (
     <div className="h-[calc(100vh-56px)] lg:h-screen overflow-auto w-screen flex items-center">

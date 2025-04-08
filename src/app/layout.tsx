@@ -3,7 +3,6 @@ import Head from "next/head";
 import "./globals.css";
 
 import MovieProvider from "../context/MovieContext";
-import ThemeHandler from "@/components/widgets/ThemeHandler";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,11 +33,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </Head>
       <MovieProvider>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
-          <ThemeHandler>
+
             <div className="h-[calc(100vh-56px)] md:h-full overflow-auto w-screen flex items-center">
               {children}
             </div>
-          </ThemeHandler>
+
         </body>
       </MovieProvider>
     </html>
